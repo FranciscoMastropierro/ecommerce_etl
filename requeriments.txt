@@ -1,5 +1,4 @@
 pandas
 streamlit
 plotly
-sqlite3-binary
 openpyxl
