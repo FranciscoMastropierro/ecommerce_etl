@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 
 # --- CONFIGURACIÓN GENERAL ---
-st.set_page_config(page_title="E-Commerce Dashboard", layout="wide")
+st.set_page_config(page_title="Aurelion Dashboard", layout="wide")
 
 # --- CONEXIÓN A LA BASE ---
 
@@ -81,7 +81,7 @@ else:
     df = df[df["fecha"] == pd.to_datetime(filtro_fecha)]
 
 # --- DASHBOARD PRINCIPAL ---
-st.title("📊 Dashboard de E-Commerce")
+st.title("📊 Dashboard Aurelion")
 
 # Métricas principales
 col1, col2, col3 = st.columns(3)

@@ -7,6 +7,12 @@ ENV/
 env.bak/
 venv.bak/
 
-.data/*
-.database/*
+# Ignorar carpetas de datos y base de datos
+data/
+database/
+data/**
+database/**
+
+etl_*
 instrucciones.md
+__pycache__

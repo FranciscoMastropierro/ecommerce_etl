@@ -15,12 +15,19 @@ Los datos provienen de archivos Excel y se almacenan en una base **SQLite** (`da
 │   ├── ventas.xlsx
 │   └── detalle_ventas.xlsx
 ├── database/
-│ └── ecommerce.db # Base de datos SQLite resultante
+│   └── ecommerce.db # Base de datos SQLite resultante
 ├── app.py # Aplicación Streamlit
 ├── README.md
-├── etl.py # Script del proceso ETL
-└── requeriments.txt
+├── extract.py
+├── transform.py
+├── load.py
+├── utils.py
+├── main.py # Script del proceso ETL
+├── requirements.txt
+└── .gitignore
 ```
+
+> ⚠️ Las carpetas `data/` y `database/` y su contenido están ignoradas en git por defecto.
 
 ---
 
@@ -48,7 +55,13 @@ pip install -r requirements.txt
 Genera o actualiza la base database/ecommerce.db a partir de los archivos Excel:
 
 ```bash
-python etl.py
+python main.py --step extract|transform|load|all
+```
+
+Por ejemplo, para ejecutar todo el flujo:
+
+```bash
+python main.py --step all
 ```
 
 ### 📊 2. Lanzar el dashboard
