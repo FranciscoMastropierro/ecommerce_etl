@@ -29,14 +29,8 @@ def validate_and_transform(dfs: Dict[str, pd.DataFrame]) -> Tuple[Dict[str, pd.D
         if "cantidad" in dv.columns:
             dv["cantidad"] = pd.to_numeric(
                 dv["cantidad"], errors="coerce").fillna(0).astype(int)
-        if "precio_unitario" in dv.columns:
-            dv["precio_unitario"] = pd.to_numeric(
-                dv["precio_unitario"], errors="coerce")
         if "importe" not in dv.columns or dv["importe"].isnull().all():
             dv["importe"] = dv["cantidad"] * dv["precio_unitario"]
-        else:
-            dv.loc[dv["importe"].isnull(), "importe"] = dv["cantidad"] * \
-                dv["precio_unitario"]
         dfs["detalle_ventas"] = dv
 
     fk_issues = {}
