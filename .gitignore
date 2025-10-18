@@ -8,9 +8,7 @@ env.bak/
 venv.bak/
 
 # Ignorar carpetas de datos y base de datos
-data/
 database/
-data/**
 database/**
 
 etl_*

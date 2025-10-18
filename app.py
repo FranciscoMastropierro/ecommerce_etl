@@ -12,14 +12,24 @@ st.set_page_config(page_title="Aurelion Dashboard", layout="wide")
 
 @st.cache_data
 def get_data():
-    conn = sqlite3.connect("database/ecommerce.db")
+    import os
 
-    ventas = pd.read_sql_query("SELECT * FROM ventas", conn)
-    clientes = pd.read_sql_query("SELECT * FROM clientes", conn)
-    detalle = pd.read_sql_query("SELECT * FROM detalle_ventas", conn)
-    productos = pd.read_sql_query("SELECT * FROM productos", conn)
+    db_path = "database/ecommerce.db"
 
-    conn.close()
+    if os.path.exists(db_path):
+        conn = sqlite3.connect(db_path)
+        ventas = pd.read_sql_query("SELECT * FROM ventas", conn)
+        clientes = pd.read_sql_query("SELECT * FROM clientes", conn)
+        detalle = pd.read_sql_query("SELECT * FROM detalle_ventas", conn)
+        productos = pd.read_sql_query("SELECT * FROM productos", conn)
+        conn.close()
+    else:
+        # Carga desde los Excel si la base no está disponible
+        ventas = pd.read_excel("data/ventas.xlsx")
+        clientes = pd.read_excel("data/clientes.xlsx")
+        detalle = pd.read_excel("data/detalle_ventas.xlsx")
+        productos = pd.read_excel("data/productos.xlsx")
+
     return ventas, clientes, detalle, productos
 
 
