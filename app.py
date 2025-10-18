@@ -80,6 +80,7 @@ if filtro_ciudad:
 if filtro_categoria:
     df = df[df["categoria"].isin(filtro_categoria)]
 
+
 # Manejo robusto del filtro de fecha
 if isinstance(filtro_fecha, tuple) and len(filtro_fecha) == 2:
     start, end = filtro_fecha
@@ -87,8 +88,6 @@ if isinstance(filtro_fecha, tuple) and len(filtro_fecha) == 2:
         (df["fecha"] >= pd.to_datetime(start)) &
         (df["fecha"] <= pd.to_datetime(end))
     ]
-else:
-    df = df[df["fecha"] == pd.to_datetime(filtro_fecha)]
 
 # --- DASHBOARD PRINCIPAL ---
 st.title("📊 Dashboard Aurelion")
